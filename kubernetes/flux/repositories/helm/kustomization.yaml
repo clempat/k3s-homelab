@@ -20,3 +20,4 @@ resources:
   - ./weave-gitops.yaml
   - ./backube.yaml
   - ./external-secrets.yaml
+  - ./piraeus.yaml
