@@ -18,3 +18,5 @@ resources:
   - ./prometheus-community.yaml
   - ./stakater.yaml
   - ./weave-gitops.yaml
+  - ./backube.yaml
+  - ./external-secrets.yaml
