@@ -34,3 +34,29 @@ spec:
     - name: kube-prometheus-stack-values
       kind: ConfigMap
       valuesKey: values.yaml
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: private
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: Alert Manager
+          hajimari.io/icon: mdi:alert-decagram-outline
+          hajimari.io/group: infrastructure
+        hosts:
+          - &host "alerts.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
+            secretName: *host
+      alertmanagerSpec:
+        useExistingSecret: true
+        configSecret: alertmanager-secret
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 1Gi
