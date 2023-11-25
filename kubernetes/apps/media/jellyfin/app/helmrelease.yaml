@@ -121,4 +121,5 @@ spec:
         type: nfs
         server: 192.168.30.4
         path: /mnt/HDD/media
-        globalMounts: /mnt/storage/media
+        globalMounts:
+          - path: /mnt/storage/media
