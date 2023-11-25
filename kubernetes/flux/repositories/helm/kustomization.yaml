@@ -24,3 +24,4 @@ resources:
   - ./cloudnative-pg.yaml
   - ./node-feature-discovery.yaml
   - ./intel.yaml
+  - ./democratic-csi.yaml
