@@ -38,7 +38,7 @@ spec:
     alertmanager:
       ingress:
         enabled: true
-        ingressClassName: private
+        ingressClassName: internal
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/appName: Alert Manager
