@@ -2,14 +2,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: jellyfin-gatus-ep
-  namespace: media
+  name: "${APP}-gatus-ep"
   labels:
     gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
-      - name: jellyfin
+      - name: "${APP}"
         group: guarded
         url: 1.1.1.1
         interval: 1m
@@ -17,7 +16,7 @@ data:
           hide-hostname: true
           hide-url: true
         dns:
-          query-name: jellyfin.${SECRET_DOMAIN}
+          query-name: "${GATUS_SUBDOMAIN:-${APP}}.${SECRET_DOMAIN}"
           query-type: A
         conditions:
           - "len([BODY]) == 0"
