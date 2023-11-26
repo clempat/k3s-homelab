@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cloudnative-pg-cluster
-  path: ./k3s-cluster/apps/default/freshrss/app
+  path: ./kubernetes/apps/default/freshrss/app
   prune: true
   sourceRef:
     kind: GitRepository
