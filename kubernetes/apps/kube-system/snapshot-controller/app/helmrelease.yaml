@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: snapshot-controller
-      version: 0.2.4
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
-        name: democratic-csi
+        name: piraeus
         namespace: flux-system
       interval: 30m
   install:
@@ -21,9 +21,8 @@ spec:
     crds: CreateReplace
   values:
     controller:
-      enabled: true
       args:
-        - "--enable-distributed-snapshotting"
+        enableDistributedSnapshotting: true
       serviceMonitor:
         create: true
     webhook:
