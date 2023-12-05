@@ -21,6 +21,9 @@ spec:
     crds: CreateReplace
   values:
     controller:
+      enabled: true
+      args:
+        - "--enable-distributed-snapshotting"
       serviceMonitor:
         create: true
     webhook:
