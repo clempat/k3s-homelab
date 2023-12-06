@@ -4,6 +4,9 @@ kind: ExternalSecret
 metadata:
   name: "${APP}-volsync"
 spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
   target:
     deletionPolicy: Delete
     template:
