@@ -23,3 +23,8 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 3m
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CAPACITY: 1Gi
+      CLAIM: freshrss-config
