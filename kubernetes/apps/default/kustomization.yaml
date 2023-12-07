@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./hajimari/ks.yaml
   - ./freshrss/ks.yaml
+  - ./rss-bridge/ks.yaml
