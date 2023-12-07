@@ -65,12 +65,18 @@ spec:
             port: 80
 
     persistence:
-      config:
+      data:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: freshrss-config
+        existingClaim: freshrss
         globalMounts:
-          - path: /var/www/FreshRSS
+          - path: /var/www/FreshRSS/data
+      extensions:
+        enable: true
+        type: persistentVolumeClaim
+        existingClaim: freshrss-extensions
+        globalMounts:
+          - path: /var/www/FreshRSS/extensions
 
     ingress:
       main:
