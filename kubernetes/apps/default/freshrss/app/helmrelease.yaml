@@ -67,11 +67,10 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: freshrss-config
-        advancedMounts:
-          main:
-            main:
-              - path: /var/www/FreshRSS/data
+        type: persistentVolumeClaim
+        existingClaim: *app
+        globalMounts:
+          - path: /var/www/FreshRSS
 
     ingress:
       main:
