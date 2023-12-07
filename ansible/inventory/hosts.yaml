@@ -6,6 +6,8 @@ kubernetes:
         nuc-master-1:
           ansible_user: clement
           ansible_host: 192.168.40.203
-        fuji-master-1:
+    worker:
+      hosts:
+        fuji-worker-1:
           ansible_user: clement
           ansible_host: 192.168.40.201
