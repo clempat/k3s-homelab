@@ -4,5 +4,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: freshrss-extensions
 spec:
-  accessModes: ["ReadWriteOnce"]
-  storageClassName: "local-hostpath"
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-hostpath
+  resources:
+    requests:
+      storage: 1Gi
