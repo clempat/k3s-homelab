@@ -68,7 +68,7 @@ spec:
       config:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: *app
+        existingClaim: freshrss-config
         globalMounts:
           - path: /var/www/FreshRSS
 
