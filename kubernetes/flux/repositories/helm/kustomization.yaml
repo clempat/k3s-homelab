@@ -26,3 +26,4 @@ resources:
   - ./intel.yaml
   - ./democratic-csi.yaml
   - ./minecraft.yaml
+  - ./piped.yaml
