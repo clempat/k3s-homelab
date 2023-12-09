@@ -24,7 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: local-path-provisioner
+    - name: democratic-csi-local
       namespace: kube-system
   values:
     crds:
