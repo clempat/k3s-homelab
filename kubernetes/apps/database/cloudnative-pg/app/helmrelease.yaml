@@ -24,7 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: democratic-csi-local
+    - name: democratic-csi-local-path
       namespace: kube-system
   values:
     crds:
