@@ -69,8 +69,10 @@ spec:
       config:
         enabled: true
         existingClaim: *app
-        globalMounts:
-          - path: /server/volume
+        advancedMounts:
+          main:
+            main:
+              - path: /server/volume
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
     resources:
