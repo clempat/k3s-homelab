@@ -7,3 +7,4 @@ resources:
   - ./freshrss/ks.yaml
   - ./rss-bridge/ks.yaml
   # - ./scrypted/ks.yaml
+  - ./prowlarr/ks.yaml
