@@ -62,7 +62,7 @@ spec:
           browser:
             image: 
               repository: ghcr.io/browserless/chrome
-              tag: latest
+              tag: latest@sha256:c4c8836c2421fe6a99a6c8484e7bb8970e4a80bcc9e92dc237ef1aa9557ae613
               pullPolicy: Always
             env:
               SCREEN_WIDTH: "1920"
