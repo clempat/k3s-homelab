@@ -103,7 +103,5 @@ spec:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: changedetection
-        advancedMounts:
-          main:
-            main:
-              - path: /datastore
+        globalMounts:
+          - path: /datastore
