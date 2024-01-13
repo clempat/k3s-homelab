@@ -39,6 +39,7 @@ spec:
               SCREEN_DEPTH: "16"
               CONNECTION_TIMEOUT: "300000"
               CONCURRENT: "10"
+              HOST: browserless.default.svc.cluster.local
     service:
       main:
         ports:
