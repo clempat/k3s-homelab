@@ -6,11 +6,12 @@ metadata:
   name: &app invidious
   namespace: flux-system
 spec:
+  targetNamespace: downloads
   path: ./kubernetes/apps/default/invidious/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: home-kubernetes
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
     - name: cluster-apps-external-secrets-stores
