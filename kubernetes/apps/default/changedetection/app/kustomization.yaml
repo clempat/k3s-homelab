@@ -6,5 +6,3 @@ resources:
   - ../../../../templates/gatus/guarded
   - ../../../../templates/volsync
   - ./helmrelease.yaml
-patchesStrategicMerge:
-  - ./patches/browser.yaml
