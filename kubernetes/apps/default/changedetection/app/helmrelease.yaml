@@ -24,12 +24,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    defaultPodOptions:
-      securityContext:
-        runAsUser: 568
-        runAsGroup: 568
-        fsGroup: 568
-        fsGroupChangePolicy: OnRootMismatch
     controllers:
       main:
         type: statefulset
@@ -59,6 +53,11 @@ spec:
                 enabled: false
               startup:
                 enabled: false
+            securityContext:
+              runAsUser: 568
+              runAsGroup: 568
+              fsGroup: 568
+              fsGroupChangePolicy: OnRootMismatch
           browser:
             image: 
               repository: ghcr.io/browserless/chrome
