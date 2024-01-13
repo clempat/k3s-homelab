@@ -7,5 +7,4 @@ resources:
   - ./freshrss/ks.yaml
   - ./rss-bridge/ks.yaml
   - ./changedetection/ks.yaml
-  - ./browserless/ks.yaml
   # - ./scrypted/ks.yaml
