@@ -33,7 +33,6 @@ spec:
     controllers:
       main:
         type: statefulset
-        statefulset:
         containers:
           main:
             image:
