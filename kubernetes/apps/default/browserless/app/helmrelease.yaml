@@ -24,12 +24,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    defaultPodOptions:
-      securityContext:
-        runAsUser: 568
-        runAsGroup: 568
-        fsGroup: 568
-        fsGroupChangePolicy: OnRootMismatch
     controllers:
       main:
         type: statefulset
@@ -45,7 +39,6 @@ spec:
               SCREEN_DEPTH: "16"
               CONNECTION_TIMEOUT: "300000"
               CONCURRENT: "10"
-              HOST: "browserless.${SECRET_DOMAIN}"
     service:
       main:
         ports:
