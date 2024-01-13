@@ -46,7 +46,7 @@ spec:
               PGID: 568
               USE_X_SETTINGS: 1
               PLAYWRIGHT_DRIVER_URL: ws://browser:3000/?stealth=1&--disable-web-security=true&--user-data-dir=~/tmp/cache
-              BASE_URL: "https://changedetection${SECRET_DOMAIN}"
+              BASE_URL: "https://changedetection.${SECRET_DOMAIN}"
             resources:
               requests:
                 cpu: 10m
