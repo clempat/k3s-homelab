@@ -26,11 +26,6 @@ spec:
   values:
     controllers:
       main:
-      service:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: "internal.${SECRET_DOMAIN}"
-          io.cilium/lb-ipam-ips: "192.168.40.214"
-        externalTrafficPolicy: Cluster
         type: statefulset
         containers:
           main:
@@ -46,6 +41,9 @@ spec:
               CONCURRENT: "10"
     service:
       main:
+        type: LoadBalancer
+        annotations:
+          io.cilium/lb-ipam-ips: 192.168.40.214
         ports:
           http:
             port: &port 3000
