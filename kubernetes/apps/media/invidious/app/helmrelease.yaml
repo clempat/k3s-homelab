@@ -33,8 +33,10 @@ spec:
           reloader.stakater.com/auto: "true"
         initContainers:
           01-init-db:
-            image: "ghcr.io/onedr0p/postgres-init:16.1"
-            imagePullPolicy: "IfNotPresent"
+            image: 
+              repository: "ghcr.io/onedr0p/postgres-init"
+              tag: 16.1
+              pullPolicy: "IfNotPresent"
             envFrom: &envFrom
               - secretRef:
                   name: invidious-secret
