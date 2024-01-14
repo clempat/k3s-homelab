@@ -6,7 +6,7 @@ metadata:
   name: &app invidious
   namespace: flux-system
 spec:
-  targetNamespace: downloads
+  targetNamespace: media
   path: ./kubernetes/apps/media/invidious/app
   prune: true
   sourceRef:
