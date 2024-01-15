@@ -8,4 +8,5 @@ resources:
   - ./rss-bridge/ks.yaml
   - ./changedetection/ks.yaml
   - ./browserless/ks.yaml
+  - ./paperless/ks.yaml
   # - ./scrypted/ks.yaml
