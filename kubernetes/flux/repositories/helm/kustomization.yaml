@@ -27,3 +27,4 @@ resources:
   - ./democratic-csi.yaml
   - ./minecraft.yaml
   - ./piped.yaml
+  - ./authentik.yaml
