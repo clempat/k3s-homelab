@@ -40,7 +40,7 @@ spec:
         password: ""
 
     envFrom: *envFrom
-    
+
     envValueFrom:
       AUTHENTIK_REDIS__PASSWORD:
         secretKeyRef:
@@ -52,15 +52,14 @@ spec:
       ingressClassName: external
       annotations:
         external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-        nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
       hosts:
-        - host: &hostname auth.${SECRET_DOMAIN}
+        - host: &host auth.${SECRET_DOMAIN}
           paths:
             - path: /
       tls:
         - hosts:
-            - *hostname
+            - *host
+          secretName: *host
 
     postgresql:
       enabled: false
