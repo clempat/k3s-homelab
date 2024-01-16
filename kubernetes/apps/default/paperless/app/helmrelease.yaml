@@ -24,7 +24,6 @@ spec:
 
         pod:
           securityContext:
-            runAsUser: 1012
             supplementalGroups:
               - 1013
 
