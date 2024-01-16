@@ -50,7 +50,7 @@ spec:
               # Configure folders
               PAPERLESS_CONSUMPTION_DIR: /data/nas/inbox
               PAPERLESS_DATA_DIR: /data/local/data
-              PAPERLESS_MEDIA_ROOT: /data/nas/documents
+              PAPERLESS_MEDIA_ROOT: /data/nas/media
               # Configure folder importer
               PAPERLESS_CONSUMER_POLLING: "60"
               PAPERLESS_CONSUMER_RECURSIVE: "true"
