@@ -114,9 +114,16 @@ spec:
           main:
             main:
               - path: /data/local
-      nas:
+      inbox:
         type: nfs
         server: 192.168.30.4
-        path: /mnt/HDD/Paperless
+        path: /mnt/HDD/Paperless/inbox
         globalMounts:
-          - path: /data/nas
+          - path: /data/nas/inbox
+
+      media:
+        type: nfs
+        server: 192.168.30.4
+        path: /mnt/HDD/Paperless/media
+        globalMounts:
+          - path: /data/nas/media
