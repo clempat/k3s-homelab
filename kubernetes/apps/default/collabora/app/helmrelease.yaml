@@ -36,6 +36,9 @@ spec:
               extra_params: --o:ssl.termination=true --o:ssl.enable=false
     service:
       main:
+        type: LoadBalancer
+        annotations:
+          io.cilium/lb-ipam-ips: 192.168.40.216
         ports:
           http:
             port: 9980
