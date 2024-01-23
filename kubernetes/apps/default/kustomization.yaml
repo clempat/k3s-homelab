@@ -10,4 +10,5 @@ resources:
   - ./browserless/ks.yaml
   - ./paperless/ks.yaml
   - ./collabora/ks.yaml
+  - ./atuin/ks.yaml
   # - ./scrypted/ks.yaml
