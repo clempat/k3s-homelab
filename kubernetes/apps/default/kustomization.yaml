@@ -11,4 +11,5 @@ resources:
   - ./paperless/ks.yaml
   - ./collabora/ks.yaml
   - ./atuin/ks.yaml
+  - ./nextcloud/ks.yaml
   # - ./scrypted/ks.yaml

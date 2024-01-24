@@ -28,3 +28,4 @@ resources:
   - ./minecraft.yaml
   - ./piped.yaml
   - ./authentik.yaml
+  - ./nextcloud.yaml
