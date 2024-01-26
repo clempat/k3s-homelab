@@ -47,7 +47,7 @@ spec:
           image: "ghcr.io/onedr0p/postgres-init:16.1"
           envFrom:
             - secretRef:
-                name: nextcloud-secret
+                name: *secret
       datadir: /var/www/data
       configs:
         logging.config.php: |-
@@ -62,7 +62,7 @@ spec:
           <?php
           $CONFIG = array (
             'trusted_proxies' => array(
-               0 => '${SERVICE_CIDR}',
+               0 => '${CLUSTER_CIDR}',
             ),
             'forwarded_for_headers' =>
             array (
@@ -106,7 +106,7 @@ spec:
               'class' => '\\OC\\Files\\ObjectStore\\S3',
               'arguments' => array(
                 'hostname'       => '192.168.30.4',
-                'port'           => 9001,
+                'port'           => 9003,
                 'use_path_style' => true,
                 'bucket'         => 'nextcloud-v2',
                 'autocreate'     => false,
@@ -134,9 +134,30 @@ spec:
           pm.max_spare_servers = 42
           pm.max_requests = 500
           pm.process_idle_timeout = 10s
+      extraEnv:
+        - name: S3_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: *secret
+              key: S3_ACCESS_KEY
+        - name: S3_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: *secret
+              key: S3_SECRET_KEY
+        - name: OIDC_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: *secret
+              key: OIDC_CLIENT_ID
+        - name: OIDC_CLIENT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: *secret
+              key: OIDC_CLIENT_PASSWORD
       existingSecret:
         enabled: true
-        secretName: nextcloud-secret
+        secretName: *secret
       host: &host cloud.${SECRET_DOMAIN}
       mail:
         enabled: true
@@ -215,8 +236,8 @@ spec:
         nginx.ingress.kubernetes.io/server-snippet: |-
           server_tokens off;
           proxy_hide_header X-Powered-By;
-
-          rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
+          rewrite ^/.well-known/webfinger /index.php/.well-known/webfinger last;
+          rewrite ^/.well-known/nodeinfo /index.php/.well-known/nodeinfo last;
           rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
           rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json;
           location = /.well-known/carddav {
