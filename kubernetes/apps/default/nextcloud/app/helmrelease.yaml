@@ -90,7 +90,7 @@ spec:
                   'id' => 'sub',
                   'name' => 'name',
                   'mail' => 'email',
-                  'quota' => 'nextcloudQuota',
+                  'quota' => 'quota',
                   'is_admin' => 'nextcloudAdmin',
               ),
             'oidc_login_scope' => 'openid profile email nextcloud',
