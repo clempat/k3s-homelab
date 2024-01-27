@@ -12,4 +12,5 @@ resources:
   - ./collabora/ks.yaml
   - ./atuin/ks.yaml
   - ./nextcloud/ks.yaml
+  - ./stirling-pdf/ks.yaml
   # - ./scrypted/ks.yaml
