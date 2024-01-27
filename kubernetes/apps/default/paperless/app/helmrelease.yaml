@@ -62,6 +62,8 @@ spec:
               # Configure user permissions
               USERMAP_UID: "1012"
               USERMAP_GID: "1013"
+              # MISC
+              PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
               # Configure admin user
               PAPERLESS_ADMIN_USER:
                 valueFrom:
