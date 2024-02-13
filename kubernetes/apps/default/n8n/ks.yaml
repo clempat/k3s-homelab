@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ishioni/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: automation-n8n
+  namespace: flux-system
+spec:
+  path: ./kubernetes/apps/default/n8n/app
+  targetNamespace: default
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &appname n8n
+  prune: true
+  wait: false
+  interval: 10m
+  dependsOn:
+    - name: democratic-csi-local
+    - name: volsync
+    - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: n8n.${SECRET_DOMAIN}
+      APP_UID: "568"
+      APP_GID: "568"
+      VOLSYNC_CAPACITY: 5Gi
+      CLAIM: n8n-data

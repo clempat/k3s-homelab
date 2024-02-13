@@ -1,0 +1,100 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ishioni/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: n8n
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    controllers:
+      main:
+        annotations:
+          secret.reloader.stakater.com/reload: &secret n8n-secret
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16.1
+              pullPolicy: IfNotPresent
+            envFrom:
+              - secretRef:
+                  name: *secret
+        pod:
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: "OnRootMismatch"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/n8n-io/n8n
+              tag: 1.26.0
+            command: ["n8n"]
+            env:
+              GENERIC_TIMEZONE: ${TIMEZONE}
+              DB_TYPE: postgresdb
+              N8N_HOST: ${HOSTNAME}
+              N8N_EDITOR_BASE_URL: https://${HOSTNAME}/
+              WEBHOOK_URL: https://${HOSTNAME}/
+              N8N_PORT: &port 8080
+              N8N_PROTOCOL: https
+              N8N_USER_FOLDER: /config
+              N8N_EMAIL_MODE: smtp
+              N8N_VERSION_NOTIFICATIONS_ENABLED: false
+              N8N_DIAGONISTICS_ENABLED: false
+              N8N_HIRING_BANNER_ENABLED: false
+            envFrom:
+              - secretRef:
+                  name: *secret
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: *port
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 200Mi
+                limits:
+                  memory: 1000Mi
+    persistence:
+      config:
+        enabled: true
+        existingClaim: ${CLAIM}
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        className: internal
+        hosts:
+          - host: &host ${HOSTNAME}
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls: [hosts: [*host]]
