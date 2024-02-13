@@ -13,4 +13,5 @@ resources:
   - ./atuin/ks.yaml
   - ./nextcloud/ks.yaml
   - ./stirling-pdf/ks.yaml
+  - ./pairdrop/ks.yaml
   # - ./scrypted/ks.yaml
