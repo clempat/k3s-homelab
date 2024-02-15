@@ -9,9 +9,9 @@ resources:
   - ./changedetection/ks.yaml
   - ./browserless/ks.yaml
   - ./paperless/ks.yaml
-  - ./collabora/ks.yaml
+  # - ./collabora/ks.yaml
   - ./atuin/ks.yaml
-  - ./nextcloud/ks.yaml
+  # - ./nextcloud/ks.yaml
   - ./stirling-pdf/ks.yaml
   - ./pairdrop/ks.yaml
   # - ./n8n/ks.yaml
