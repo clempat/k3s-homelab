@@ -15,6 +15,9 @@ spec:
         name: bjw-s
         namespace: flux-system
   values:
+    defaultPodOptions:
+      annotations:
+        instrumentation.opentelemetry.io/inject-java: "true"
     controllers:
       main:
         strategy: Recreate
@@ -40,9 +43,6 @@ spec:
       main:
         enabled: true
         className: internal
-        annotations:
-          nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-          nginx.ingress.kubernetes.io/proxy-body-size: "10G"
         hosts:
           - host: &host pdf.${SECRET_DOMAIN}
             paths:
