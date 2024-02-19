@@ -48,3 +48,4 @@ spec:
       VOLSYNC_GID: "1013"
       CLAIM: paperless-data
       VOLSYNC_CAPACITY: 15Gi
+      HOSTNAME: paperless.${SECRET_DOMAIN}
