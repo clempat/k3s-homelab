@@ -29,9 +29,9 @@ spec:
         type: statefulset
         containers:
           main:
-            image: 
-              repository: ghcr.io/browserless/chrome
-              tag: latest@sha256:cd353e60e9b31844893ddc5bb4938fb60c113f0cd3a26e6a46a188f68dcdefe7
+            image:
+              repository: ghcr.io/browserless/chromium
+              tag: v2.2.0
               pullPolicy: Always
             env:
               SCREEN_WIDTH: "1920"
