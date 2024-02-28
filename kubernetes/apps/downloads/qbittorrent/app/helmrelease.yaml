@@ -57,7 +57,7 @@ spec:
           gluetun:
             image:
               repository: ghcr.io/qdm12/gluetun
-              tag: latest@sha256:f27886cde7b4272b6892d0bc472819ba6c91fe61af44da1bc05aecaf86bab09e
+              tag: latest@sha256:ea17355896ba98a4bfaf975bcda3993c2c94178188fb3efbfaefbdccb99edd65
             env:
               - name: VPN_SERVICE_PROVIDER
                 value: mullvad
