@@ -5,7 +5,7 @@ metadata:
   name: cilium-values
 data:
   values.yaml: |
-    autoDirectNodeRoutes: true
+    autoDirectNodeRoutes: false
     bpf:
       masquerade: true
     bgp:
@@ -94,4 +94,4 @@ data:
     rollOutCiliumPods: true
     securityContext:
       privileged: true
-    tunnel: disabled
+    tunnel: vxlan
