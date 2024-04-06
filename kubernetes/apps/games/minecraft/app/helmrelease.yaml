@@ -99,7 +99,7 @@ spec:
             type: ClusterIP
             port: 8123
           ingress:
-            ingressClassName: external
+            ingressClassName: internal
             enabled: true
             hosts:
               - name: &host "minecraft.${SECRET_DOMAIN}"
