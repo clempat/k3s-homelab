@@ -38,7 +38,7 @@ spec:
               PUID: 568
               PGID: 568
               USE_X_SETTINGS: 1
-              PLAYWRIGHT_DRIVER_URL: ws://browserless.default.svc.cluster.local:3000/playwright/chromium?stealth=1&--disable-web-security=true&--user-data-dir=~/browserless-cache-123
+              PLAYWRIGHT_DRIVER_URL: ws://browserless.default.svc.cluster.local:3000/playwright/chromium
               BASE_URL: "https://changedetection.${SECRET_DOMAIN}"
             resources:
               requests:
