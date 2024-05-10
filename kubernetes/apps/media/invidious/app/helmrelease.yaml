@@ -26,6 +26,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    replicaCount: 0
     controllers:
       main:
         strategy: RollingUpdate
@@ -33,7 +34,7 @@ spec:
           reloader.stakater.com/auto: "true"
         initContainers:
           01-init-db:
-            image: 
+            image:
               repository: "ghcr.io/onedr0p/postgres-init"
               tag: 16.2
               pullPolicy: "IfNotPresent"
