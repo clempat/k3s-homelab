@@ -22,7 +22,7 @@ spec:
           enabled: true
 
       initContainers:
-        01-init-db:
+        - name: 01-init-db
           image: "ghcr.io/onedr0p/postgres-init:16.2"
           imagePullPolicy: "IfNotPresent"
           envFrom: &envFrom
