@@ -39,15 +39,25 @@ spec:
             env:
               UMASK: "022"
               QBITTORRENT__PORT: &port 8080
-            resources:
-              requests:
-                cpu: 49m
-                memory: 1024Mi
-              limits:
-                memory: 8192Mi
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             securityContext:
               runAsUser: 568
               runAsGroup: 568
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
 
           dnsdist:
             image:
@@ -69,13 +79,11 @@ spec:
                 value: "off"
               - name: DOT
                 value: "off"
-              - name: FIREWALL_VPN_INPUT_PORTS
+              - name: FIREWALL_INPUT_PORTS
                 value: &port 51820
                 # Allow access to k8s subnets
               - name: FIREWALL_OUTBOUND_SUBNETS
-                value: "10.96.0.0/12,10.244.0.0/16"
-              - name: SHADOWSOCKS
-                value: "on"
+                value: "10.42.0.0/16,10.43.0.0/16"
               - name: DOT
                 value: "off"
               - name: DNS_ADDRESS
