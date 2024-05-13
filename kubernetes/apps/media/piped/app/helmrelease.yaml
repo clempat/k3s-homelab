@@ -54,7 +54,10 @@ spec:
         database:
           connection_url: jdbc:postgresql://postgres16-rw.database.svc.cluster.local:5432/piped
           driver_class: org.postgresql.Driver
-          secret: *secret
+          secret:
+            name: *secret
+            username: DB_USERNAME
+            password: DB_PASSWORD
     ingress:
       main:
         enabled: true
