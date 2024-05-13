@@ -81,7 +81,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ${CLAIM}
+        existingClaim: ${VOLSYNC_CLAIM}
     service:
       main:
         ports:

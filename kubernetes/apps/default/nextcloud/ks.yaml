@@ -27,6 +27,6 @@ spec:
       APP_UID: "82"
       APP_GID: "82"
       AUTH_HOSTNAME: auth.${SECRET_DOMAIN}
-      CLAIM: nextcloud-config
+      VOLSYNC_CLAIM: nextcloud-config
       VOLSYNC_CAPACITY: 10Gi
       GATUS_SUBDOMAIN: cloud
