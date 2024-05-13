@@ -133,15 +133,6 @@ spec:
           main:
             main:
               - path: /config
-      scripts:
-        type: configMap
-        name: qbittorrent-scripts
-        defaultMode: 0775
-        advancedMounts:
-          main:
-            main:
-              - path: /scripts
-                readOnly: true
       media:
         type: nfs
         server: 192.168.30.4
