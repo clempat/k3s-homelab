@@ -153,6 +153,14 @@ spec:
           main:
             main:
               - path: /data/nas-media
+
+      empty-config:
+        type: emptyDir
+        advancedMounts:
+          main:
+            port-forward:
+              - path: /config
+
       # dnsdist-config:
       #   type: configMap
       #   name: qbittorrent-dnsdist
