@@ -78,7 +78,7 @@ spec:
                 value: "on"
               - name: DOT
                 value: "off"
-              - name: DNS_PLAINTEXT_ADDRESS
+              - name: DNS_ADDRESS
                 value: "127.0.0.2"
             envFrom:
               - secretRef:
