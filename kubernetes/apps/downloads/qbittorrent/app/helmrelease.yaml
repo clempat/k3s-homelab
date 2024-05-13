@@ -20,7 +20,7 @@ spec:
     controllers:
       main:
         annotations:
-          configmap.reloader.stakater.com/reload: qbittorrent-dnsdist
+          # configmap.reloader.stakater.com/reload: qbittorrent-dnsdist
           secret.reloader.stakater.com/reload: qbittorrent-secret
 
         pod:
@@ -57,10 +57,10 @@ spec:
                 drop:
                   - ALL
 
-          dnsdist:
-            image:
-              repository: docker.io/powerdns/dnsdist-18
-              tag: 1.8.3
+          # dnsdist:
+          #   image:
+          #     repository: docker.io/powerdns/dnsdist-18
+          #     tag: 1.8.3
 
           gluetun:
             image:
@@ -78,14 +78,14 @@ spec:
               - name: DOT
                 value: "off"
               - name: FIREWALL_INPUT_PORTS
-                value: *port
+                value: 8080
                 # Allow access to k8s subnets
               - name: FIREWALL_OUTBOUND_SUBNETS
                 value: "10.42.0.0/16,10.43.0.0/16"
               - name: DOT
                 value: "off"
-              - name: DNS_ADDRESS
-                value: "127.0.0.2"
+              # - name: DNS_ADDRESS
+              #   value: "127.0.0.2"
             envFrom:
               - secretRef:
                   name: qbittorrent-secret
@@ -153,21 +153,21 @@ spec:
           main:
             main:
               - path: /data/nas-media
-      dnsdist-config:
-        type: configMap
-        name: qbittorrent-dnsdist
-        advancedMounts:
-          main:
-            dnsdist:
-              - path: /etc/dnsdist/dnsdist.conf
-                subPath: dnsdist.conf
-                readOnly: true
-      gluetun-data:
-        type: emptyDir
-        advancedMounts:
-          main:
-            gluetun:
-              - path: /tmp/gluetun
-            port-forward:
-              - path: /tmp/gluetun
-                readOnly: true
+      # dnsdist-config:
+      #   type: configMap
+      #   name: qbittorrent-dnsdist
+      #   advancedMounts:
+      #     main:
+      #       dnsdist:
+      #         - path: /etc/dnsdist/dnsdist.conf
+      #           subPath: dnsdist.conf
+      #           readOnly: true
+      # gluetun-data:
+      #   type: emptyDir
+      #   advancedMounts:
+      #     main:
+      #       gluetun:
+      #         - path: /tmp/gluetun
+      #       port-forward:
+      #         - path: /tmp/gluetun
+      #           readOnly: true
