@@ -69,10 +69,6 @@ spec:
                 value: "off"
               - name: DOT
                 value: "off"
-              - name: SERVER_CITIES
-                value: Frankfurt
-              - name: SERVER_HOSTNAMES
-                value: de32-wireguard
               - name: FIREWALL_VPN_INPUT_PORTS
                 value: &port 51820
                 # Allow access to k8s subnets
