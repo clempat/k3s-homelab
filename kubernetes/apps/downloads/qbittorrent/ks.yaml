@@ -42,7 +42,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./kubernetes/main/apps/downloads/qbittorrent/tools"
+  path: "./kubernetes/apps/downloads/qbittorrent/tools"
   prune: true
   sourceRef:
     kind: GitRepository
