@@ -79,7 +79,7 @@ spec:
               'class' => '\\OC\\Files\\ObjectStore\\S3',
               'arguments' => array(
                 'hostname'       => '192.168.30.4',
-                'port'           => 9003,
+                'port'           => 9002,
                 'use_path_style' => true,
                 'bucket'         => 'nextcloud-v2',
                 'autocreate'     => false,
