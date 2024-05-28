@@ -25,7 +25,7 @@ spec:
           main:
             image:
               repository: frooodle/s-pdf
-              tag: 0.23.1
+              tag: 0.24.6
             env:
               DOCKER_ENABLE_SECURITY: 'false'
             resources:
