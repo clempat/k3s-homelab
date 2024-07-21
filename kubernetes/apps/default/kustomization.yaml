@@ -15,4 +15,6 @@ resources:
   - ./stirling-pdf/ks.yaml
   - ./pairdrop/ks.yaml
   - ./n8n/ks.yaml
-  # - ./scrypted/ks.yaml
+  - ./scrypted/ks.yaml
+  - ./homeassistant/ks.yaml
+  - ./frigate/ks.yaml

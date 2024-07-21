@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homeassistant-network-application
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host home.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homeassistant-network-application
+                port:
+                  number: 443
+  tls:
+    - hosts:
+        - *host
