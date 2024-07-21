@@ -1,32 +1,15 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname nextcloud
+  name: nextcloud
   namespace: flux-system
 spec:
   targetNamespace: default
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/apps/default/nextcloud/app"
   prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  wait: false
-  dependsOn:
-    - name: democratic-csi-local
-    - name: volsync
-    - name: external-secrets-stores
-  postBuild:
-    substitute:
-      APP: *appname
-      APP_UID: "82"
-      APP_GID: "82"
-      AUTH_HOSTNAME: auth.${SECRET_DOMAIN}
-      VOLSYNC_CLAIM: nextcloud-config
-      VOLSYNC_CAPACITY: 10Gi
-      GATUS_SUBDOMAIN: cloud
+  wait: true
