@@ -83,6 +83,25 @@ spec:
               app.kubernetes.io/name: ingress-nginx
               app.kubernetes.io/instance: nginx-internal
               app.kubernetes.io/component: controller
+      extraContainers:
+        - name: tailscale-sidecar
+          image: "ghcr.io/tailscale/tailscale:latest"
+          env:
+            - name: TS_KUBE_SECRET
+              value: "tailscale-secret"
+            - name: TS_USERSPACE
+              value: "false"
+            - name: TS_DEBUG_FIREWALL_MODE
+              value: auto
+            - name: TS_AUTHKEY
+              valueFrom:
+                secretKeyRef:
+                  name: tailscale-secret
+                  key: TS_AUTHKEY
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
       resources:
         requests:
           cpu: 10m
