@@ -93,6 +93,8 @@ spec:
               value: "false"
             - name: TS_DEBUG_FIREWALL_MODE
               value: auto
+            - name: TS_EXTRA_ARGS
+              value: --hostname=k8s-nginx
             - name: TS_AUTHKEY
               valueFrom:
                 secretKeyRef:
