@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: docker.io/collabora/code
-              tag: 24.04.5.2.1
+              tag: 24.04.6.2.1
               pullPolicy: IfNotPresent
             env:
               extra_params: --o:ssl.termination=true --o:ssl.enable=false
