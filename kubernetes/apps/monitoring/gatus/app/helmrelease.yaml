@@ -85,35 +85,35 @@ spec:
               METHOD: WATCH
             resources: *configSyncResources
 
-          tailscale:
-            image:
-              repository: "ghcr.io/tailscale/tailscale"
-              tag: v1.72.1
-            env:
-              - name: TS_KUBE_SECRET
-                value: "tailscale-secret"
-              - name: TS_USERSPACE
-                value: "false"
-              - name: TS_DEBUG_FIREWALL_MODE
-                value: auto
-              - name: TS_EXTRA_ARGS
-                value: --hostname=k8s-gatus
-              - name: TS_AUTHKEY
-                valueFrom:
-                  secretKeyRef:
-                    name: tailscale-secret
-                    key: TS_AUTHKEY
-            securityContext:
-              capabilities:
-                add:
-                  - NET_ADMIN
-                  - SYS_MODULE
+          # tailscale:
+          #   image:
+          #     repository: "ghcr.io/tailscale/tailscale"
+          #     tag: v1.72.1
+          #   env:
+          #     - name: TS_KUBE_SECRET
+          #       value: "tailscale-secret"
+          #     - name: TS_USERSPACE
+          #       value: "false"
+          #     - name: TS_DEBUG_FIREWALL_MODE
+          #       value: auto
+          #     - name: TS_EXTRA_ARGS
+          #       value: --hostname=k8s-gatus
+          #     - name: TS_AUTHKEY
+          #       valueFrom:
+          #         secretKeyRef:
+          #           name: tailscale-secret
+          #           key: TS_AUTHKEY
+          #   securityContext:
+          #     capabilities:
+          #       add:
+          #         - NET_ADMIN
+          #         - SYS_MODULE
         pod:
           securityContext:
-            capabilities:
-              add:
-                - NET_ADMIN
-                - SYS_MODULE
+            # capabilities:
+            #   add:
+            #     - NET_ADMIN
+            #     - SYS_MODULE
             runAsUser: 568
             runAsGroup: 568
             fsGroup: 568
