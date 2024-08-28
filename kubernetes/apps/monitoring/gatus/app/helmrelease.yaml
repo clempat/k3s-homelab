@@ -91,7 +91,7 @@ spec:
               tag: v1.72.1
             env:
               - name: TS_KUBE_SECRET
-                value: "tailscale-secret"
+                value: "gatus-secret"
               - name: TS_USERSPACE
                 value: "false"
               - name: TS_DEBUG_FIREWALL_MODE
@@ -101,12 +101,10 @@ spec:
               - name: TS_AUTHKEY
                 valueFrom:
                   secretKeyRef:
-                    name: tailscale-secret
+                    name: gatus-secret
                     key: TS_AUTHKEY
             securityContext:
-              capabilities:
-                add:
-                  - NET_ADMIN
+              privileged: true
         pod:
           securityContext:
             runAsUser: 568

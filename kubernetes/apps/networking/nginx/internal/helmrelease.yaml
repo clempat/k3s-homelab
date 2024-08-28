@@ -104,6 +104,7 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
+                - SYS_MODULE
       resources:
         requests:
           cpu: 10m
