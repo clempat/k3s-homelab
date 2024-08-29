@@ -18,3 +18,4 @@ resources:
   - ./scrypted/ks.yaml
   - ./homeassistant/ks.yaml
   - ./frigate/ks.yaml
+  - ./adguard/ks.yaml
