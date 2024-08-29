@@ -7,6 +7,6 @@ subjects:
   - kind: ServiceAccount
     name: nginx-internal
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: tailscale
   apiGroup: rbac.authorization.k8s.io

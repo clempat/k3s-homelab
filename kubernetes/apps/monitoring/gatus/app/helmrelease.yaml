@@ -20,14 +20,13 @@ spec:
   upgrade:
     cleanupOnFail: true
     remediation:
+      strategy: rollback
       retries: 3
-  uninstall:
-    keepHistory: false
   values:
     controllers:
       main:
-        annotations:
-          reloader.stakater.com/auto: "true"
+        # annotations:
+        #   reloader.stakater.com/auto: "true"
         initContainers:
           init-db:
             order: 1
@@ -85,39 +84,38 @@ spec:
               METHOD: WATCH
             resources: *configSyncResources
 
-          # tailscale:
-          #   image:
-          #     repository: "ghcr.io/tailscale/tailscale"
-          #     tag: v1.72.1
-          #   env:
-          #     - name: TS_KUBE_SECRET
-          #       value: "tailscale-secret"
-          #     - name: TS_USERSPACE
-          #       value: "false"
-          #     - name: TS_DEBUG_FIREWALL_MODE
-          #       value: auto
-          #     - name: TS_EXTRA_ARGS
-          #       value: --hostname=k8s-gatus
-          #     - name: TS_AUTHKEY
-          #       valueFrom:
-          #         secretKeyRef:
-          #           name: tailscale-secret
-          #           key: TS_AUTHKEY
-          #   securityContext:
-          #     capabilities:
-          #       add:
-          #         - NET_ADMIN
-          #         - SYS_MODULE
-        pod:
-          securityContext:
-            # capabilities:
-            #   add:
-            #     - NET_ADMIN
-            #     - SYS_MODULE
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
+          tailscale:
+            image:
+              repository: "ghcr.io/tailscale/tailscale"
+              tag: v1.72.1
+            env:
+              - name: TS_KUBE_SECRET
+                value: "tailscale-secret"
+              - name: TS_USERSPACE
+                value: "false"
+              - name: TS_DEBUG_FIREWALL_MODE
+                value: auto
+              - name: TS_EXTRA_ARGS
+                value: --hostname=k8s-gatus
+              - name: TS_AUTHKEY
+                valueFrom:
+                  secretKeyRef:
+                    name: tailscale-secret
+                    key: TS_AUTHKEY
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              capabilities:
+                add:
+                  - NET_ADMIN
+                  - SYS_MODULE
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+
     service:
       main:
         ports:
@@ -125,7 +123,13 @@ spec:
             port: *port
     serviceMonitor:
       main:
-        enabled: true
+        serviceName: gatus
+        endpoints:
+          - port: http
+            scheme: http
+            path: /metrics
+            interval: 1m
+            scrapeTimeout: 10s
     ingress:
       main:
         enabled: true
