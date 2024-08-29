@@ -13,9 +13,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: adguard-network-application
+                name: adguard
                 port:
-                  number: 443
+                  number: 3000
   tls:
     - hosts:
         - *host

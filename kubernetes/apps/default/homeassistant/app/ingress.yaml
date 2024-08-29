@@ -15,7 +15,7 @@ spec:
               service:
                 name: homeassistant-network-application
                 port:
-                  number: 443
+                  number: 8123
   tls:
     - hosts:
         - *host
