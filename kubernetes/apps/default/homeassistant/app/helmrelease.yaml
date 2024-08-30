@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homeassistant
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./kubernetes/charts/external-app-template
+      sourceRef:
+        kind: GitRepository
+        name: home-kubernetes
+        namespace: flux-system
+  values:
+    title: Home Assistant
+    hostname: "home.${SECRET_DOMAIN}"
+    service:
+      name: homeassistant
+      port: 8123
+      targetPort: http
+      ip: 192.168.40.200
+    ingress:
+      className: internal

@@ -19,7 +19,7 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ terraform kubectl sops fluxcd go-task ];
+          packages = with pkgs; [ terraform kubectl sops fluxcd go-task kubernetes-helm ];
         };
       });
     };
