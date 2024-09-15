@@ -1,3 +1,4 @@
+---
 # For dashboard sign in token:
 # kubectl -n monitoring get secret kubernetes-dashboard -o jsonpath='{.data.token}' | base64 -d
 ---

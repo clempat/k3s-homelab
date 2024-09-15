@@ -23,4 +23,3 @@ spec:
       APP: *app
       VOLSYNC_CAPACITY: 2Gi
       VOLSYNC_CLAIM: changedetection
-

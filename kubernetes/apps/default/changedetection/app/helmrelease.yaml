@@ -59,7 +59,7 @@ spec:
               fsGroup: 568
               fsGroupChangePolicy: OnRootMismatch
           browser:
-            image: 
+            image:
               repository: ghcr.io/browserless/chrome
               tag: latest@sha256:0e5b5b249afe0bc7cb6b4674f4df59f84f6914313a9fa62798c420850630ef3d
               pullPolicy: Always

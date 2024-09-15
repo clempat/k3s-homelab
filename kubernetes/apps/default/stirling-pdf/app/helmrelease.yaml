@@ -27,7 +27,7 @@ spec:
               repository: frooodle/s-pdf
               tag: 0.26.1
             env:
-              DOCKER_ENABLE_SECURITY: 'false'
+              DOCKER_ENABLE_SECURITY: "false"
             resources:
               requests:
                 cpu: 25m
