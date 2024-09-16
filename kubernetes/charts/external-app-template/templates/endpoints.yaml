@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: { { .Values.service.name } }
+  name: "{{ .Values.service.name }}"
 subsets:
   - addresses:
-      - ip: { { .Values.service.ip } }
+      - ip: "{{ .Values.service.ip }}"
     ports:
       - name: http
-        port: { { .Values.service.port } }
+        port: {{ .Values.service.port }}
         protocol: TCP

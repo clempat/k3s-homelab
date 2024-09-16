@@ -15,7 +15,7 @@ spec:
               service:
                 name: "{{ .Values.service.name }}"
                 port:
-                  number: "{{ .Values.service.port }}"
+                  number: {{ .Values.service.port }}
   tls:
     - hosts:
         - "{{ .Values.hostname }}"
