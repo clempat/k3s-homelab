@@ -96,21 +96,33 @@ data:
           - hosts:
               - "prometheus.${SECRET_DOMAIN}"
       prometheusSpec:
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
-        probeSelectorNilUsesHelmValues: false
-        scrapeConfigSelectorNilUsesHelmValues: false
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        podMonitorSelector: &selector
+          matchLabels: null
+        probeSelector: *selector
+        ruleSelector: *selector
+        scrapeConfigSelector: *selector
+        serviceMonitorSelector: *selector
         enableAdminAPI: true
         walCompression: true
-        retentionSize: 8GB
+        enableFeatures:
+          - auto-gomemlimit
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        retention: 14d
+        retentionSize: 10GB
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            memory: 1500Mi
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: local-path
+              storageClassName: openebs-hostpath
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 75Gi
     grafana:
       enabled: false
       forceDeployDashboards: true
