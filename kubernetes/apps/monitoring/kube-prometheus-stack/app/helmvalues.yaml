@@ -119,7 +119,7 @@ data:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: openebs-hostpath
+              storageClassName: local-hostpath
               resources:
                 requests:
                   storage: 75Gi
