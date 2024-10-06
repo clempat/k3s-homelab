@@ -107,7 +107,7 @@ spec:
                 - SYS_MODULE
       resources:
         requests:
-          cpu: 10m
+          cpu: 20m
           memory: 250Mi
         limits:
           memory: 500Mi

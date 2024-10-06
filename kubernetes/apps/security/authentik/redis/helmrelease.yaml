@@ -45,10 +45,10 @@ spec:
                     key: AUTHENTIK_REDIS_PASSWORD
             resources:
               requests:
-                cpu: 5m
-                memory: 128M
+                cpu: 8m
+                memory: 64M
               limits:
-                memory: 256M
+                memory: 100M
 
     service:
       main:
