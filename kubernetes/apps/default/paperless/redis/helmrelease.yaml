@@ -26,10 +26,10 @@ spec:
               tag: 7.4.0
             resources:
               requests:
-                cpu: 5m
-                memory: 32M
+                cpu: 7m
+                memory: 15M
               limits:
-                memory: 32M
+                memory: 20M
 
     service:
       main:
