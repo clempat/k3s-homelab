@@ -1,0 +1,26 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: proxmox
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./kubernetes/charts/external-app-template
+      sourceRef:
+        kind: GitRepository
+        name: home-kubernetes
+        namespace: flux-system
+  values:
+    title: Proxmox
+    hostname: "proxmox.${SECRET_DOMAIN}"
+    service:
+      name: proxmox
+      port: 8006
+      targetPort: 8006
+      ips:
+        - 192.168.40.100
+        - 192.168.40.101
+    ingress:
+      className: internal

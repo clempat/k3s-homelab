@@ -5,8 +5,15 @@ metadata:
   name: "{{ .Values.service.name }}"
 subsets:
   - addresses:
+{{- if .Values.service.ips }}
+{{- range .Values.service.ips }}
+      - ip: "{{ . }}"
+{{- end }}
+{{- else }}
       - ip: "{{ .Values.service.ip }}"
+{{- end }}
     ports:
       - name: http
         port: {{ .Values.service.port }}
         protocol: TCP
+
