@@ -19,3 +19,4 @@ resources:
   - ./homeassistant/ks.yaml
   - ./frigate/ks.yaml
   - ./adguard/ks.yaml
+  - ./proxmox/ks.yaml
